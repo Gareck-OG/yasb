@@ -7,14 +7,14 @@ komorebi:
   start_command: "komorebic start --whkd"
   stop_command: "komorebic stop --whkd"
   reload_command: "komorebic reload-configuration"
-  
+
 # This is the main configuration file for Yet Another Status Bar (YASB)
 bars:
   status-bar:
     enabled: true
-    #screens: ['DELL P2419H (1)'] 
-    #screens: ['DELL P2419H (2)'] 
-    screens: ['*'] 
+    #screens: ['DELL P2419H (1)']
+    #screens: ['DELL P2419H (2)']
+    screens: ['*']
     class_name: "yasb-bar"
     alignment:
       position: "top"
@@ -37,11 +37,12 @@ bars:
     widgets:
       left:
         [
-          "win_button",
-          "komorebi_workspaces",
-          "komorebi_active_layout",
-          "active_window"
-        ] 
+          #"win_button",
+          #"komorebi_workspaces",
+          #"komorebi_active_layout",
+          "active_window",
+          "traffic"
+        ]
       center: [
          "clock",
          "apps"
@@ -51,14 +52,14 @@ bars:
           "media",
           "wifi",
           #"battery",
-          #"lang",
-          #"ip_info",
+          "lang",
+          "ip_info",
           #"traffic",
           "cpu",
           #"github",
-          "weather",
+          #"weather",
           "memory",
-          "wallapers",
+          #"wallapers",
           "volume",
           "power_menu"
         ]
@@ -205,6 +206,8 @@ widgets:
         on_left: "toggle_label"
         on_right: "exec cmd /c Taskmgr"
 
+
+
   ip_info:
     type: "yasb.custom.CustomWidget"
     options:
@@ -216,7 +219,7 @@ widgets:
         run_interval: 120000  # every 5 minutes
         return_format: "json"
       callbacks:
-        on_left: "toggle_label"
+        on_left: "exec cmd /c start cmd.exe /k ipconfig"
         on_middle: "exec cmd /c ncpa.cpl" # open network settings
         on_right: "exec cmd /c start https://ipinfo.io/{data[ip]} " # open ipinfo in browser
 
@@ -231,7 +234,7 @@ widgets:
       location: 'Los Angeles, CA, USA' # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
       callbacks:
         on_left: "toggle_label"
-      icons: 
+      icons:
         sunnyDay: "\ue30d"
         clearNight: "\ue32b"
         cloudyDay: "\udb81\udd99"
@@ -278,7 +281,7 @@ widgets:
       uptime: True
       blur: False
       blur_background: True
-      animation_duration: 300 # Milisecond 
+      animation_duration: 300 # Milisecond
       button_row: 3 # Number of buttons in row, min 1 max 5
       buttons:
         lock: ["\uea75","Lock"]
@@ -290,26 +293,25 @@ widgets:
         cancel: ["\udb81\udf3a","Cancel"]
         #force_shutdown: ["\uf011","Force Shut Down"]
         #force_restart: ["\uead2","Force Restart"]
- 
+
 
   apps:
     type: "yasb.applications.ApplicationsWidget"
     options:
       label: "{data}"
       app_list:
-        #- {icon: "\uf489", launch: "wt"}
-        #- {icon: "\uf413", launch: "explorer c:\\Users\\amn"}
-        #- {icon: "\udb82\ude1e", launch: "C:\\Users\\amn\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"}
-        #- {icon: "\udb80\ude39", launch: "C:\\Program Files\\Mozilla Firefox\\firefox.exe"}
-        #- {icon: "\uf1ff", launch: "C:\\Users\\amn\\AppData\\Local\\Discord\\Update.exe --processStart Discord.exe"}
-        #- {icon: "\ue217", launch: "C:\\Users\\amn\\AppData\\Roaming\\Telegram Desktop\\Telegram.exe"}
-        - {icon: "\uf0a2", launch: "notification_center"}
-        - {icon: "\ueb51", launch: "quick_settings"}
+        - {icon: "\uf489", launch: "wt"}
+        - {icon: "\uf413", launch: "explorer c:\\Users\\Matti"}
+        #- {icon: "\udb82\ude1e", launch: "C:\\Users\\Matti\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"}
+        - {icon: "\udb80\ude39", launch: "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"}
+        - {icon: "\uf1ff", launch: "C:\\Users\\Matti\\AppData\\Local\\Discord\\Update.exe --processStart Discord.exe"}
+        #- {icon: "\uf0a2", launch: "notification_center"}
+        #- {icon: "\ueb51", launch: "quick_settings"}
         #- {icon: "\uf46a", launch: "cmd.exe /c start ms-settings:windowsupdate"}
         - {icon: "\uf422", launch: "search"}
         #- {icon: "\udb84\udf55", launch: "widget"}
         # Currently available to use quick_settings, notification_center, search, widget, launcher (launcher will trigger ALT+A)
- 
+
 
   github:
     type: "yasb.github.GithubWidget"

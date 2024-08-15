@@ -18,6 +18,8 @@
 - Start the application:
   - run `python src/main.py` in your terminal (or click [yasb.vbs](src/yasb.vbs))
 
+## My edit of YASB (no Komorebi)
+![MyEdit](demo/demo4.png)
 
 ## Demo YASB
 ![Reborn](demo/demo3.png)
