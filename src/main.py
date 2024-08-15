@@ -52,13 +52,13 @@ def main():
 
 if __name__ == "__main__":
     init_logger()
-    base_excepthook = sys.excepthook 
+    base_excepthook = sys.excepthook
     def exception_hook(exctype, value, traceback):
         EventService().clear()
         logging.error("Unhandled exception", exc_info=value)
-        # base_excepthook(exctype, value, traceback) 
-        sys.exit(1) 
-    sys.excepthook = exception_hook 
+        # base_excepthook(exctype, value, traceback)
+        sys.exit(1)
+    sys.excepthook = exception_hook
     try:
         main()
     except BaseException as e:
